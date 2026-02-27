@@ -3,209 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Znex Sistemas | Intelligence Solution</title>
+    <title>Znex | Smart Command Center</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #10B981; /* Verde do seu sistema */
-            --accent: #FBBF24;  /* Ouro dos seus planos Premium */
+            --primary: #10B981; 
+            --accent: #FBBF24;  
             --dark: #020617;
-            --glass: rgba(255, 255, 255, 0.03);
+            --glass: rgba(15, 23, 42, 0.8);
         }
+
+        * { box-sizing: border-box; }
 
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
             display: flex; 
             justify-content: center; 
             align-items: center; 
-            min-height: 100vh; 
+            height: 100vh; 
             margin: 0; 
             background-color: var(--dark);
             color: #ffffff;
+            /* Impede a barra de rolagem */
+            overflow: hidden; 
             background-image: radial-gradient(circle at 50% 50%, #0f172a 0%, #020617 100%);
-            overflow-x: hidden;
         }
 
-        /* Linha de energia futurista */
-        .energy-line {
+        /* Partículas de energia corrigidas para não gerar scroll */
+        .energy-stream {
             position: absolute;
-            width: 2px;
-            height: 100px;
+            width: 1px;
+            height: 80px;
             background: linear-gradient(to bottom, transparent, var(--primary), transparent);
-            filter: blur(2px);
-            animation: moveDown 3s linear infinite;
+            filter: blur(1px);
+            opacity: 0.5;
+            top: -100px;
+            pointer-events: none;
+            z-index: 0;
         }
 
         .container { 
             text-align: center; 
-            padding: 50px; 
-            border-radius: 40px; 
+            padding: 40px; 
+            border-radius: 32px; 
             background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
-            max-width: 700px;
-            width: 90%;
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 80px rgba(0, 0, 0, 0.6);
+            max-width: 650px;
+            width: 92%;
             z-index: 10;
+            position: relative;
         }
 
-        /* Logo Holográfica (Representação Visual) */
-        .hologram-logo {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 30px;
-            position: relative;
+        .hologram-box {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
             background: linear-gradient(135deg, var(--accent), var(--primary));
-            border-radius: 20px;
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 800;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--dark);
-            box-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
             animation: float 4s ease-in-out infinite;
         }
 
-        .ai-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid var(--primary);
-            padding: 8px 20px;
-            border-radius: 100px;
-            color: var(--primary);
-            font-size: 0.75rem;
-            font-weight: 800;
-            letter-spacing: 2px;
+        .status-header {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
             margin-bottom: 25px;
         }
 
-        .pulse-dot {
-            width: 8px;
-            height: 8px;
+        .status-pill {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--primary);
+            padding: 6px 14px;
+            border-radius: 100px;
+            color: var(--primary);
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pulse {
+            width: 6px;
+            height: 6px;
             background: var(--primary);
             border-radius: 50%;
             animation: blink 1s infinite;
         }
 
         h1 { 
-            font-size: 2.8rem; 
-            line-height: 1;
+            font-size: 2.4rem; 
+            line-height: 1.1;
             margin: 0;
             font-weight: 800;
-            background: linear-gradient(to right, #fff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
         }
 
-        .highlight { color: var(--primary); -webkit-text-fill-color: initial; }
+        .highlight { color: var(--primary); }
 
-        .description {
+        .vision {
             color: #94a3b8;
-            margin: 25px 0 40px;
-            font-size: 1.1rem;
-            line-height: 1.6;
+            margin: 20px 0 35px;
+            font-size: 1.05rem;
+            line-height: 1.5;
         }
 
-        /* Grid de Inteligência */
-        .grid-ia {
+        /* Grid de Comando do Usuário */
+        .command-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 40px;
+            gap: 12px;
+            margin-bottom: 35px;
         }
 
-        .ia-item {
-            background: rgba(255, 255, 255, 0.02);
+        .command-node {
+            background: rgba(255, 255, 255, 0.03);
             padding: 15px;
-            border-radius: 15px;
+            border-radius: 16px;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.85rem;
             text-align: left;
         }
 
-        .ia-item b { color: var(--accent); display: block; margin-bottom: 5px; }
+        .command-node b { color: var(--accent); font-size: 0.8rem; display: block; margin-bottom: 4px; }
+        .command-node span { font-size: 0.85rem; color: #e2e8f0; }
 
-        .btn-whatsapp {
+        .btn-main {
             background: var(--primary);
             color: white;
-            padding: 22px 40px;
-            border-radius: 20px;
+            padding: 20px 40px;
+            border-radius: 16px;
             font-weight: 800;
             text-decoration: none;
             display: inline-block;
             transition: 0.3s;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.3);
+            font-size: 0.85rem;
+            width: 100%;
         }
 
-        .btn-whatsapp:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 45px rgba(16, 185, 129, 0.5);
+        .btn-main:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+        footer {
+            margin-top: 30px;
+            font-size: 0.65rem;
+            color: #475569;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; box-shadow: 0 0 10px var(--primary); }
-            50% { opacity: 0.3; }
-        }
-
-        @keyframes moveDown {
-            0% { top: -10%; opacity: 0; }
-            50% { opacity: 1; }
-            100% { top: 110%; opacity: 0; }
-        }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .grid-ia { grid-template-columns: 1fr; }
+        /* Animações */
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        
+        @keyframes fall {
+            from { top: -100px; opacity: 0; }
+            30% { opacity: 0.5; }
+            100% { top: 100vh; opacity: 0; }
         }
     </style>
 </head>
 <body>
-    <div class="energy-line" style="left: 10%;"></div>
-    <div class="energy-line" style="left: 90%; animation-delay: 1.5s;"></div>
+    <script>
+        for (let i = 0; i < 15; i++) {
+            let div = document.createElement('div');
+            div.className = 'energy-stream';
+            div.style.left = Math.random() * 100 + '%';
+            div.style.animation = `fall ${2 + Math.random() * 3}s linear infinite`;
+            div.style.animationDelay = Math.random() * 5 + 's';
+            document.body.appendChild(div);
+        }
+    </script>
 
     <div class="container">
-        <div class="hologram-logo">Z</div>
+        <div class="hologram-box">Z</div>
         
-        <div class="ai-badge">
-            <div class="pulse-dot"></div>
-            SISTEMA ALTAMENTE CAPACITADO
+        <div class="status-header">
+            <div class="status-pill"><div class="pulse"></div> IA CAPACITADA</div>
+            <div class="status-pill" style="border-color: var(--accent); color: var(--accent);">V3.6.0</div>
         </div>
 
-        <h1>A Inteligência que Antecipa o <span class="highlight">Futuro do seu Negócio</span>.</h1>
+        <h1>Comando e <span class="highlight">Inteligência</span> em suas mãos.</h1>
         
-        <p class="description">
-            O <b>Znex v3.6.0</b> integra processamento neural de dados para transformar sua operação em um ecossistema autônomo e lucrativo.
+        <p class="vision">
+            A solução definitiva para quem exige controle total. Monitore a saúde do seu negócio com a nossa nova interface de <b>Comando Preditivo</b>.
         </p>
 
-        <div class="grid-ia">
-            <div class="ia-item">
-                <b>🧠 Predição Quantum</b>
-                Antecipação de riscos financeiros com 99% de precisão.
+        <div class="command-grid">
+            <div class="command-node">
+                <b>📊 Saúde Operacional</b>
+                <span>Status: Otimizado (Latência Zero)</span>
             </div>
-            <div class="ia-item">
-                <b>⚡ Fluxos Autônomos</b>
-                Automação inteligente de processos e faturamento.
+            <div class="command-node">
+                <b>🛡️ Proteção Quantum</b>
+                <span>Integridade de dados 100% ativa.</span>
             </div>
         </div>
 
-        <p style="color: var(--accent); font-weight: 800; margin-bottom: 20px; font-size: 0.8rem; letter-spacing: 2px;">LANÇAMENTO EXCLUSIVO EM BREVE</p>
-        
-        <a href="https://wa.me/5548984277338?text=Olá! Tenho interesse em conhecer a solução inteligente Znex v3.6.0 e garantir meu acesso VIP." class="btn-whatsapp">
-            Garantir Acesso VIP via WhatsApp
+        <a href="https://wa.me/5548984277338?text=Quero conhecer a Central de Comando do Znex v3.6.0" class="btn-main">
+            Solicitar Acesso VIP via WhatsApp
         </a>
 
-        <footer style="margin-top: 40px; font-size: 0.7rem; color: #475569; letter-spacing: 1px;">
-            SISTEMA DESENVOLVIDO POR ROBERT DIAS PEREIRA
+        <footer>
+            Znex Sistemas • Powered by Robert Dias Pereira
         </footer>
     </div>
 </body>

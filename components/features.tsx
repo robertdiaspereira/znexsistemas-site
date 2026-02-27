@@ -61,7 +61,7 @@ export function Features() {
           <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-primary">
             Recursos
           </p>
-          <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-5xl">
+          <h2 className="text-balance font-display text-3xl font-bold tracking-tight text-foreground md:text-5xl">
             Tudo que voce precisa para gerenciar seu negocio
           </h2>
           <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">

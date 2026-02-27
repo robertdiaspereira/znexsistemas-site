@@ -10,7 +10,7 @@ export function CTA() {
           <div className="pointer-events-none absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-white/10" />
 
           <div className="relative mx-auto max-w-2xl text-center">
-            <h2 className="text-balance text-3xl font-bold text-primary-foreground md:text-5xl">
+            <h2 className="text-balance font-display text-3xl font-bold text-primary-foreground md:text-5xl">
               Pronto para transformar sua gestao?
             </h2>
             <p className="mt-4 text-pretty text-lg leading-relaxed text-primary-foreground/80">

@@ -25,7 +25,7 @@ export function Quantum() {
               Comando Quantum
             </span>
           </div>
-          <h2 className="text-balance text-3xl font-bold tracking-tight text-white md:text-5xl">
+          <h2 className="text-balance font-display text-3xl font-bold tracking-tight text-white md:text-5xl">
             Monitoramento global em tempo real
           </h2>
           <p className="mt-4 text-pretty text-lg leading-relaxed text-quantum-text">

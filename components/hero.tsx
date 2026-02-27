@@ -20,7 +20,7 @@ export function Hero() {
           </div>
 
           {/* Headline */}
-          <h1 className="max-w-4xl text-balance text-4xl font-bold leading-tight tracking-tight text-foreground md:text-6xl lg:text-7xl">
+          <h1 className="max-w-4xl text-balance font-display text-4xl font-bold leading-tight tracking-tight text-foreground md:text-6xl lg:text-7xl">
             Gestao de Assistencia Tecnica levada ao{" "}
             <span className="text-primary">proximo nivel</span>
           </h1>

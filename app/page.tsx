@@ -2,6 +2,7 @@ import { Navbar } from "@/components/navbar"
 import { Hero } from "@/components/hero"
 import { Stats } from "@/components/stats"
 import { Features } from "@/components/features"
+import { AssistenciaShowcase } from "@/components/assistencia-showcase"
 import { Quantum } from "@/components/quantum"
 import { Testimonials } from "@/components/testimonials"
 import { Pricing } from "@/components/pricing"
@@ -16,6 +17,7 @@ export default function Home() {
       <Hero />
       <Stats />
       <Features />
+      <AssistenciaShowcase />
       <Quantum />
       <Testimonials />
       <Pricing />

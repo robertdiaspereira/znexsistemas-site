@@ -299,7 +299,7 @@ function ChecklistMockup({ activeTab }: { activeTab: string }) {
                 ? "bg-emerald-light text-emerald-dark"
                 : g.dias > 14
                   ? "bg-golden-light text-golden-dark"
-                  : "bg-red-100 text-coral"
+                  : "bg-destructive/10 text-coral"
             }`}
           >
             {g.dias} dias

@@ -3,200 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Znex Sistemas | Gestão de Alta Performance</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Znex Sistemas | The Future of ERP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #10B981; /* Verde Sucesso/Ação */
-            --accent: #FBBF24;  /* Ouro Premium/Valor */
-            --dark: #0F172A;    /* Profissionalismo */
-            --slate: #64748B;   /* Neutralidade */
-            --bg: #F8FAFC;      /* Limpeza Visual */
+            --primary: #10B981;
+            --accent: #FBBF24;
+            --dark-bg: #020617;
+            --card-bg: rgba(15, 23, 42, 0.6);
+            --text-glow: rgba(16, 185, 129, 0.5);
         }
 
         body { 
-            font-family: 'Inter', sans-serif; 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
             display: flex; 
             justify-content: center; 
             align-items: center; 
             min-height: 100vh; 
             margin: 0; 
-            background-color: var(--bg);
+            background-color: var(--dark-bg);
+            color: #ffffff;
+            overflow-x: hidden;
+            /* Fundo com efeito de profundidade espacial */
             background-image: 
-                radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.05) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(251, 191, 36, 0.05) 0px, transparent 50%);
-            color: var(--dark);
+                radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(251, 191, 36, 0.05) 0%, transparent 40%);
+        }
+
+        /* Partículas sutis animadas no fundo */
+        body::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+            opacity: 0.3;
+            pointer-events: none;
         }
 
         .container { 
             text-align: center; 
-            padding: 60px 40px; 
-            border-radius: 32px; 
-            background: #ffffff;
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.04);
-            max-width: 600px;
+            padding: 80px 40px; 
+            border-radius: 40px; 
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 80px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(16, 185, 129, 0.05);
+            max-width: 800px;
             width: 90%;
-            animation: fadeIn 1s ease-out;
+            z-index: 1;
+            animation: containerEntry 1.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .logo-box {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
-        .logo-symbol {
-            width: 45px;
-            height: 45px;
-            background: linear-gradient(135deg, var(--accent), #F59E0B);
-            border-radius: 12px;
+        .logo-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
             font-weight: 800;
-            font-size: 1.5rem;
-            transform: rotate(-5deg);
+            font-size: 2.5rem;
+            color: var(--dark-bg);
+            box-shadow: 0 0 30px var(--text-glow);
+            margin-bottom: 15px;
+            animation: pulse 3s infinite;
         }
 
-        .logo-text {
-            font-size: 1.8rem;
+        .status-badge {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.75rem;
             font-weight: 800;
-            color: var(--dark);
-            letter-spacing: -1px;
+            letter-spacing: 2px;
             text-transform: uppercase;
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+            margin-bottom: 30px;
+            display: inline-block;
         }
-
-        .logo-text span { color: var(--primary); }
 
         h1 { 
-            margin: 0; 
-            font-size: 2.2rem; 
+            font-size: 3.5rem; 
             font-weight: 800; 
-            line-height: 1.1;
-            letter-spacing: -1px;
-            background: linear-gradient(to bottom right, var(--dark), var(--slate));
+            line-height: 1;
+            margin: 0;
+            background: linear-gradient(to right, #fff, #94a3b8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .tagline {
-            color: var(--slate);
+        .sub-text {
+            color: #94a3b8;
             font-size: 1.2rem;
-            margin: 20px 0 40px 0;
-            line-height: 1.5;
+            margin: 25px auto;
+            max-width: 600px;
+            line-height: 1.6;
         }
 
-        .value-grid {
+        /* Funcionalidades de IA */
+        .ai-features {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 50px 0;
         }
 
-        .value-item {
+        .ai-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             padding: 20px;
-            border-radius: 20px;
-            background: #F1F5F9;
-            border: 1px solid transparent;
-            transition: all 0.3s ease;
+            border-radius: 24px;
+            transition: all 0.4s;
             text-align: left;
         }
 
-        .value-item:hover {
+        .ai-card:hover {
+            background: rgba(16, 185, 129, 0.05);
             border-color: var(--primary);
-            background: white;
-            box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.1);
+            transform: translateY(-5px);
         }
 
-        .value-item strong {
-            display: block;
+        .ai-card h3 {
             color: var(--primary);
             font-size: 0.9rem;
-            margin-bottom: 4px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            margin: 0 0 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .value-item span {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--dark);
+        .ai-card p {
+            color: #cbd5e1;
+            font-size: 0.85rem;
+            margin: 0;
+            line-height: 1.4;
         }
 
-        .cta-button {
-            background: var(--dark);
-            color: white;
-            padding: 18px 36px;
-            border-radius: 100px;
-            font-weight: 700;
+        .launch-box {
+            background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.1), transparent);
+            padding: 20px;
+            margin-top: 40px;
+            border-radius: 15px;
+        }
+
+        .cta-futuristic {
+            background: #ffffff;
+            color: var(--dark-bg);
+            padding: 20px 45px;
+            border-radius: 15px;
+            font-weight: 800;
             text-decoration: none;
             display: inline-block;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(15, 23, 42, 0.2);
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
         }
 
-        .cta-button:hover {
-            transform: translateY(-3px);
+        .cta-futuristic:hover {
             background: var(--primary);
-            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+            color: white;
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.4);
+            transform: scale(1.05);
         }
 
         footer {
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid #F1F5F9;
-            font-size: 0.8rem;
-            color: var(--slate);
+            margin-top: 60px;
+            font-size: 0.75rem;
+            color: #475569;
+            letter-spacing: 1px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Animations */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.2); }
+            50% { box-shadow: 0 0 50px rgba(16, 185, 129, 0.5); }
+            100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.2); }
         }
 
-        @media (max-width: 480px) {
-            .value-grid { grid-template-columns: 1fr; }
+        @keyframes containerEntry {
+            from { opacity: 0; filter: blur(20px); transform: scale(0.9); }
+            to { opacity: 1; filter: blur(0); transform: scale(1); }
+        }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 2.2rem; }
+            .container { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="logo-box">
-            <div class="logo-symbol">Z</div>
-            <div class="logo-text">ZNEX <span>SISTEMAS</span></div>
-        </div>
-
-        <h1>Transforme dados em decisões e processos em lucro.</h1>
-        <p class="tagline">A estrutura tecnológica completa para empresas que não aceitam menos que a máxima eficiência.</p>
+        <div class="status-badge">Next-Gen Intelligence</div>
         
-        <div class="value-grid">
-            <div class="value-item">
-                <strong>Visibilidade</strong>
-                <span>Comando Quantum: Sua operação em tempo real.</span>
+        <div class="logo-box">
+            <div class="logo-icon">Z</div>
+            <div class="logo-text">ZNEX<span>.AI</span></div>
+        </div>
+
+        <h1>A Era da Gestão Autônoma Começou.</h1>
+        <p class="sub-text">O Znex v3.6.0 não é apenas um ERP. É um motor de inteligência artificial altamente capacitado que gerencia, prevê e escala sua operação enquanto você foca na estratégia.</p>
+        
+        <div class="ai-features">
+            <div class="ai-card">
+                <h3>🧠 Core Quantum</h3>
+                <p>Análise preditiva de fluxo de caixa e comportamento de consumo em tempo real.</p>
             </div>
-            <div class="value-item">
-                <strong>Inteligência</strong>
-                <span>Automação de processos guiada por dados.</span>
+            <div class="ai-card">
+                <h3>🤖 Agentes Integrados</h3>
+                <p>IA capacitada para automação de faturamento e suporte inteligente ao cliente.</p>
             </div>
-            <div class="value-item">
-                <strong>Escalabilidade</strong>
-                <span>Pronto para crescer, do PDV ao Multi-Tenant.</span>
-            </div>
-            <div class="value-item">
-                <strong>Segurança</strong>
-                <span>Backup Real-Time e integridade absoluta.</span>
+            <div class="ai-card">
+                <h3>🛡️ Neural Security</h3>
+                <p>Monitoramento global de integridade e proteção de dados com latência zero.</p>
             </div>
         </div>
 
-        <a href="#" class="cta-button">Conheça a Versão 3.6.0</a>
+        <div class="launch-box">
+            <p style="margin-bottom: 20px; font-weight: 600; color: var(--accent);">Lançamento em Breve • Março 2026</p>
+            <a href="#" class="cta-futuristic">Entrar na Lista VIP</a>
+        </div>
 
         <footer>
-            <strong>Znex ERP</strong> • Infraestrutura de Gestão Inteligente<br>
-            Arquitetado por <strong>Robert Dias Pereira</strong>
+            DESIGNED BY ZNEX SYSTEMS LABS • VERSION 3.6.0 ALPHA
         </footer>
     </div>
 </body>

@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Znex | Smart Command Center</title>
+    <title>Znex Sistemas | Central de Comando Inteligente</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #10B981; 
-            --accent: #FBBF24;  
-            --dark: #020617;
-            --glass: rgba(15, 23, 42, 0.8);
+            /* Paleta Oficial extraída do seu ERP */
+            --znex-emerald: #10B981; 
+            --znex-gold: #FBBF24;  
+            --znex-dark: #020617;
+            --glass-bg: rgba(15, 23, 42, 0.85);
         }
 
         * { box-sizing: border-box; }
@@ -22,202 +23,217 @@
             align-items: center; 
             height: 100vh; 
             margin: 0; 
-            background-color: var(--dark);
+            background-color: var(--znex-dark);
             color: #ffffff;
-            /* Impede a barra de rolagem */
-            overflow: hidden; 
+            overflow: hidden; /* Zero scroll */
             background-image: radial-gradient(circle at 50% 50%, #0f172a 0%, #020617 100%);
         }
 
-        /* Partículas de energia corrigidas para não gerar scroll */
-        .energy-stream {
+        /* Efeito de feixes de dados (Lágrimas corrigidas) */
+        .data-beam {
             position: absolute;
             width: 1px;
-            height: 80px;
-            background: linear-gradient(to bottom, transparent, var(--primary), transparent);
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, var(--znex-emerald), transparent);
             filter: blur(1px);
-            opacity: 0.5;
-            top: -100px;
+            opacity: 0.4;
             pointer-events: none;
             z-index: 0;
         }
 
         .container { 
             text-align: center; 
-            padding: 40px; 
-            border-radius: 32px; 
-            background: var(--glass);
-            backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 80px rgba(0, 0, 0, 0.6);
-            max-width: 650px;
+            padding: 45px; 
+            border-radius: 35px; 
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 100px rgba(0, 0, 0, 0.7);
+            max-width: 600px;
             width: 92%;
             z-index: 10;
             position: relative;
         }
 
-        .hologram-box {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 20px;
-            background: linear-gradient(135deg, var(--accent), var(--primary));
-            border-radius: 18px;
+        /* Representação fiel da sua Logo Atual via CSS */
+        .logo-wrapper {
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Se tiver a imagem, substitua esta div por <img src="sua-logo.png"> */
+        .znex-logo-circle {
+            width: 75px;
+            height: 75px;
+            background: linear-gradient(135deg, var(--znex-gold), #F59E0B);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 800;
             font-size: 2.2rem;
-            color: var(--dark);
-            box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
-            animation: float 4s ease-in-out infinite;
+            color: white;
+            box-shadow: 0 0 25px rgba(251, 191, 36, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 10px;
         }
 
-        .status-header {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .status-pill {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid var(--primary);
-            padding: 6px 14px;
-            border-radius: 100px;
-            color: var(--primary);
-            font-size: 0.65rem;
+        .znex-text {
             font-weight: 800;
-            letter-spacing: 1px;
-            display: flex;
+            font-size: 1.5rem;
+            letter-spacing: -1px;
+            color: #E2E8F0;
+        }
+        .znex-text span { color: var(--znex-emerald); }
+
+        .ai-active-pill {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--znex-emerald);
+            padding: 5px 15px;
+            border-radius: 100px;
+            color: var(--znex-emerald);
+            font-size: 0.6rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
 
-        .pulse {
+        .pulse-light {
             width: 6px;
             height: 6px;
-            background: var(--primary);
+            background: var(--znex-emerald);
             border-radius: 50%;
-            animation: blink 1s infinite;
+            animation: blink 1.2s infinite;
         }
 
         h1 { 
-            font-size: 2.4rem; 
-            line-height: 1.1;
+            font-size: 2.2rem; 
+            line-height: 1.2;
             margin: 0;
             font-weight: 800;
-            letter-spacing: -1px;
         }
 
-        .highlight { color: var(--primary); }
-
-        .vision {
+        .hero-desc {
             color: #94a3b8;
-            margin: 20px 0 35px;
-            font-size: 1.05rem;
+            margin: 20px 0 30px;
+            font-size: 1.1rem;
             line-height: 1.5;
         }
 
-        /* Grid de Comando do Usuário */
-        .command-grid {
+        /* Dashboard de Saúde (Command Center) */
+        .command-center {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            gap: 15px;
             margin-bottom: 35px;
         }
 
-        .command-node {
+        .metric-card {
             background: rgba(255, 255, 255, 0.03);
-            padding: 15px;
-            border-radius: 16px;
+            padding: 18px;
+            border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             text-align: left;
         }
 
-        .command-node b { color: var(--accent); font-size: 0.8rem; display: block; margin-bottom: 4px; }
-        .command-node span { font-size: 0.85rem; color: #e2e8f0; }
+        .metric-card label {
+            color: var(--znex-gold);
+            font-size: 0.7rem;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
 
-        .btn-main {
-            background: var(--primary);
+        .metric-card p {
+            font-size: 0.85rem;
+            margin: 0;
+            color: #f1f5f9;
+        }
+
+        .btn-vip {
+            background: var(--znex-emerald);
             color: white;
             padding: 20px 40px;
-            border-radius: 16px;
+            border-radius: 18px;
             font-weight: 800;
             text-decoration: none;
-            display: inline-block;
+            display: block;
             transition: 0.3s;
             text-transform: uppercase;
-            font-size: 0.85rem;
-            width: 100%;
+            font-size: 0.9rem;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
         }
 
-        .btn-main:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+        .btn-vip:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 40px rgba(16, 185, 129, 0.5);
         }
 
-        footer {
-            margin-top: 30px;
-            font-size: 0.65rem;
-            color: #475569;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        @keyframes flow { from { top: -100px; } to { top: 100vh; } }
 
-        /* Animações */
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-        
-        @keyframes fall {
-            from { top: -100px; opacity: 0; }
-            30% { opacity: 0.5; }
-            100% { top: 100vh; opacity: 0; }
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .command-center { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
+
     <script>
-        for (let i = 0; i < 15; i++) {
-            let div = document.createElement('div');
-            div.className = 'energy-stream';
-            div.style.left = Math.random() * 100 + '%';
-            div.style.animation = `fall ${2 + Math.random() * 3}s linear infinite`;
-            div.style.animationDelay = Math.random() * 5 + 's';
-            document.body.appendChild(div);
+        // Sistema de partículas sem gerar barra de rolagem
+        for (let i = 0; i < 12; i++) {
+            let beam = document.createElement('div');
+            beam.className = 'data-beam';
+            beam.style.left = Math.random() * 100 + '%';
+            beam.style.animation = `flow ${3 + Math.random() * 2}s linear infinite`;
+            beam.style.animationDelay = Math.random() * 4 + 's';
+            document.body.appendChild(beam);
         }
     </script>
 
     <div class="container">
-        <div class="hologram-box">Z</div>
+        <div class="logo-wrapper">
+            <div class="znex-logo-circle">Z</div>
+            <div class="znex-text">ZNEX <span>SISTEMAS</span></div>
+        </div>
         
-        <div class="status-header">
-            <div class="status-pill"><div class="pulse"></div> IA CAPACITADA</div>
-            <div class="status-pill" style="border-color: var(--accent); color: var(--accent);">V3.6.0</div>
+        <div class="ai-active-pill">
+            <div class="pulse-light"></div>
+            Engine IA: Capacitada
         </div>
 
-        <h1>Comando e <span class="highlight">Inteligência</span> em suas mãos.</h1>
+        <h1>Gestão que pensa. <br>Comando que <span>Antecipa</span>.</h1>
         
-        <p class="vision">
-            A solução definitiva para quem exige controle total. Monitore a saúde do seu negócio com a nossa nova interface de <b>Comando Preditivo</b>.
+        <p class="hero-desc">
+            Vá além do ERP comum. Assuma o controle com uma solução inteligente focada em <b>saúde operacional</b> e lucratividade real.
         </p>
 
-        <div class="command-grid">
-            <div class="command-node">
-                <b>📊 Saúde Operacional</b>
-                <span>Status: Otimizado (Latência Zero)</span>
+        <div class="command-center">
+            <div class="metric-card">
+                <label>Status do Sistema</label>
+                <p>Alta Performance (v3.6.0)</p>
             </div>
-            <div class="command-node">
-                <b>🛡️ Proteção Quantum</b>
-                <span>Integridade de dados 100% ativa.</span>
+            <div class="metric-card">
+                <label>Saúde da Empresa</label>
+                <p>Análise Preditiva Ativa</p>
             </div>
         </div>
 
-        <a href="https://wa.me/5548984277338?text=Quero conhecer a Central de Comando do Znex v3.6.0" class="btn-main">
-            Solicitar Acesso VIP via WhatsApp
+        <a href="https://wa.me/5548984277338?text=Olá Robert! Quero conhecer a nova Central de Comando Inteligente do Znex v3.6.0." class="btn-vip">
+            Garantir Acesso VIP
         </a>
 
-        <footer>
-            Znex Sistemas • Powered by Robert Dias Pereira
+        <footer style="margin-top: 30px; font-size: 0.6rem; color: #475569; letter-spacing: 2px;">
+            © 2026 ZNEX SYSTEMS • LABS EDITION
         </footer>
     </div>
 </body>
